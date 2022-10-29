@@ -28,3 +28,17 @@ function pwspk_adding_script()
 
     wp_enqueue_script('pwspk_plugin_dev', plugin_dir_url(__FILE__) . "assets/js/custom.js");
 }
+
+add_action( 'admin_menu','pwspk_options' );
+
+function pwspk_options(){
+    add_menu_page( 'pwspk option','pwspk option', 'manage_options', 'pwspk-option', 'pwspk_option_func' );  //add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = '', string $icon_url = '', int|float $position = null ): string
+    add_submenu_page('pwspk-option', 'pwspk settings', 'pwspk settings', 'manage_options', 'pwspk settings','pwspk_settings_func' );   //add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = '', int|float $position = null ):
+}
+
+function pwspk_option_func(){
+    echo '<h1>pwspk_option</h1>';
+}
+function pwspk_settings_func(){
+    echo '<h1>pwspk_settings</h1>';
+}
