@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 /**
  * Plugin Name: Pwsdk_plugin_test
@@ -12,28 +12,19 @@
 //remove_action is used to remove  hooks created using add_action.
 //has_action is contitional statement use to check weather the hook is there or not
 
-add_action( 'init', 'pwspk_init' );  
+include plugin_dir_path(__FILE__)."/inc/shortcode.php";     //plugin_dir_path is use to add php files in the file
 
-function pwspk_init(){
-    add_shortcode( 'test', 'pwspk_my_shortcode' );
-    }
-    function pwspk_my_shortcode($atts)
-    {
-        $atts = shortcode_atts(array(
-                'message' => 'hello worlds',
-            ), $atts,'test');
-         return $atts['message'];
-    }
-
-    add_filter( 'the_title' , 'pwspk_title' );
-function pwspk_title($title){
+add_filter('the_title', 'pwspk_title');
+function pwspk_title($title)
+{
     return "you title is hacked";
 }
 
- add_action( 'wp_enqueue_scripts' ,'pwspk_adding_script');
+add_action('wp_enqueue_scripts', 'pwspk_adding_script');
 
- function pwspk_adding_script(){
-      wp_enqueue_style( 'pwspk_plugin_dev', plugin_dir_url(__FILE__)."assets/css/style.css");
+function pwspk_adding_script()
+{
+    wp_enqueue_style('pwspk_plugin_dev', plugin_dir_url(__FILE__) . "assets/css/style.css"); //plugin_dir_url is use to add static resources 
 
-      wp_enqueue_script( 'pwspk_plugin_dev', plugin_dir_url(__FILE__)."assets/js/custom.js");
- }
+    wp_enqueue_script('pwspk_plugin_dev', plugin_dir_url(__FILE__) . "assets/js/custom.js");
+}
