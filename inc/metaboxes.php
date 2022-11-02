@@ -19,7 +19,6 @@ function pwspk_custom_metabox($post)
     </select>
 <?php
 }
-
 add_action('save_post', 'pwspk_save_post');
 
 function pwspk_save_post($post_id)
