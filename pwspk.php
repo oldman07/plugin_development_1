@@ -27,6 +27,7 @@ function pwspk_register_deactivation_hook()
 
 include plugin_dir_path(__FILE__)."/inc/shortcode.php";     //plugin_dir_path is use to add php files in the file
 include plugin_dir_path(__FILE__)."/inc/metaboxes.php";
+include plugin_dir_path(__FILE__)."/inc/custom-posttype.php";
 
 
 add_filter('the_title', 'pwspk_title');                     //the_title is a pre define term use to make changes in post title.
