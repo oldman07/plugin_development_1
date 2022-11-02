@@ -12,6 +12,9 @@ register_deactivation_hook(__FILE__,'pwspk_register_deactivation_hook');
 //remove_action is used to remove  hooks created using add_action.
 //has_action is contitional statement use to check weather the hook is there or not
 
+ //php recommend to wrap in Div
+//settings_errors( ) use to show error on front end.
+
 function pwspk_register_activation_hook(){
     add_option( 'pwspk_option_1', '' );
 }
@@ -38,7 +41,7 @@ function pwspk_adding_script()
 }
 
 add_action( 'admin_menu','pwspk_options' );                                 // admin_menu  Fires before the administration menu loads in the admin
-add_action( 'admin_menu','pwspk_process_form_settings' );
+add_action( 'admin_menu','pwspk_process_form_settings' );                   //process form settings allow us to redirect our form
 
 function pwspk_options(){
     add_menu_page( 'pwspk option','pwspk option', 'manage_options', 'pwspk-option', 'pwspk_option_func' );  //add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = '', string $icon_url = '', int|float $position = null ): string
@@ -50,16 +53,18 @@ function pwspk_process_form_settings(){
     register_setting( 'pwspk-option-group' ,'pwspk-option-name' );
     if(isset($_POST['action']) && current_user_can( 'manage_options' ))
     {
-      update_option( 'pwspk-option-group', sanitize_text_field( $_POST['pwspk_option_1'] ) );
+      update_option( 'pwspk_option_1', sanitize_text_field( $_POST['pwspk_option_1'] ) );
 
-    };
+    };                                                                                                  
 }
 
 function pwspk_option_func(){ ?>
  
 
-<div class="wrap">
+<div class="wrap">                                                 
 <h1>pwspk_option</h1>
+<?php settings_errors( ) ?>
+
     <form action="options.php" method='post'>
         <?php settings_fields( 'pwspk-option-group' )  ?>
         <label for=""> Setting 1:
