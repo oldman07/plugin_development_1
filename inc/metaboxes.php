@@ -4,7 +4,7 @@ add_action('admin_init', 'pwspk_metaboxes');
 
 function pwspk_metaboxes()
 {
-    add_meta_box('_mycustommetabox', 'My Custom MetaBox', 'pwspk_custom_metabox', ['post','page']);               //add_meta_box( $id:string, $title:string, $callback:callable, $screen:string|array|WP_Screen|null, $context:string, $priority:string, $callback_args:array|null ) is use to add metaboxes
+    add_meta_box('_mycustommetabox', 'My Custom MetaBox', 'pwspk_custom_metabox', ['post','page','news']);               //add_meta_box( $id:string, $title:string, $callback:callable, $screen:string|array|WP_Screen|null, $context:string, $priority:string, $callback_args:array|null ) is use to add metaboxes
 }
 function pwspk_custom_metabox($post)
 {
@@ -27,4 +27,16 @@ function pwspk_save_post($post_id)
         update_post_meta($post_id, '_mymetabox', $_POST['_mymetabox']);                                     //update_post_meta is used to update the meta of the given post
         update_post_meta($post_id, '_myselectbox', $_POST['_selectbox']);
     }
+}
+
+
+add_action('the_post','pwspk_the_post');
+
+function pwspk_the_post($post){
+    ?>
+    <style>
+        
+    </style>
+    <?php
+
 }

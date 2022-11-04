@@ -30,11 +30,11 @@ include plugin_dir_path(__FILE__)."/inc/metaboxes.php";
 include plugin_dir_path(__FILE__)."/inc/custom-posttype.php";
 
 
-add_filter('the_title', 'pwspk_title');                     //the_title is a pre define term use to make changes in post title.
-function pwspk_title($title)
-{
-    return "you title is hacked";
-}
+// add_filter('the_title', 'pwspk_title');                     //the_title is a pre define term use to make changes in post title.
+// function pwspk_title($title)
+// {
+//     return "you title is hacked";
+// }
 
 add_action('wp_enqueue_scripts', 'pwspk_adding_script');        //wp_enqueue_scripts is user to add static resources like css and js.
 
