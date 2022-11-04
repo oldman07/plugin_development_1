@@ -33,10 +33,19 @@ function pwspk_save_post($post_id)
 add_action('the_post','pwspk_the_post');
 
 function pwspk_the_post($post){
+    // print_r($post->ID);
+    // exit;
+    $_mymetabox = get_post_meta($post->ID, '_mymetabox', true) ? get_post_meta($post->ID, '_mymetabox', true) : " "; 
     ?>
     <style>
-        
+        <?php
+if (is_admin($post)) {                              //checking is admin if its on admin side it change its colour
+    ?>
+        .post-<?php  echo $post->ID; ?>{
+            background-color: <?php echo $_mymetabox ?>  
+        }
     </style>
     <?php
+}
 
 }

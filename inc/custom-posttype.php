@@ -17,8 +17,7 @@ function pwspk_news_template($template){
     global $post;
     if(is_single() && $post->post_type == 'news'){
         $template = plugin_dir_path(__FILE__).'../templates/pwspk_news.php';
-        // print_r($template);
-        // exit;
+        
     }
     return $template;
 }
