@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 add_action('admin_init', 'pwspk_metaboxes');
 
@@ -33,6 +33,8 @@ function pwspk_save_post($post_id)
 add_action('the_post','pwspk_the_post');
 
 function pwspk_the_post($post){
+    if(is_single( )|| is_home()||is_front_page())                   #sloving the error in post update by using if condition
+    {
     // print_r($post->ID);
     // exit;
     $_mymetabox = get_post_meta($post->ID, '_mymetabox', true) ? get_post_meta($post->ID, '_mymetabox', true) : " "; 
@@ -46,6 +48,7 @@ if (is_admin($post)) {                              //checking is admin if its o
         }
     </style>
     <?php
+}
 }
 
 }
