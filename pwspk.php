@@ -15,6 +15,10 @@ register_deactivation_hook(__FILE__, 'pwspk_register_deactivation_hook');
 //php recommend to wrap in Div
 //settings_errors( ) use to show error on front end.
 
+
+
+
+
 function pwspk_register_activation_hook()
 {
     add_option('pwspk_option_1', '');
