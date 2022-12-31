@@ -29,10 +29,12 @@ function pwspk_register_deactivation_hook()
     delete_option('pwspk_option_1');
 }
 
+define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+
 include plugin_dir_path(__FILE__)."/inc/shortcode.php";     //plugin_dir_path is use to add php files in the file
 include plugin_dir_path(__FILE__)."/inc/metaboxes.php";
 include plugin_dir_path(__FILE__)."/inc/custom-posttype.php";
-
+// include PLUGIN_PATH."inc/api.php";
 
 // add_filter('the_title', 'pwspk_title');                     //the_title is a pre define term use to make changes in post title.
 // function pwspk_title($title)
@@ -81,6 +83,7 @@ function pwspk_option_func()
         <input type="text" name='pwspk_option_1' value ="<?php esc_html(get_option('pwspk_option_1')); ?>" /></label>
         <?php submit_button('Save changes') ?>
     </form>
+    <?php include PLUGIN_PATH."inc/api.php" ?>
 </div>
 
 <?php
