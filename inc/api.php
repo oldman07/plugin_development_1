@@ -1,9 +1,18 @@
 <?php
 defined('ABSPATH') || die('nice try');
 
-$info = wp_remote_retrieve_body( wp_remote_get('https://api.github.com/users/oldman07') );
-$user = json_decode($info);
+$posts = wp_remote_retrieve_body( wp_remote_get('https://jsonplaceholder.typicode.com/posts') );
+// $post = wp_remote_retrieve_body( wp_remote_post('https://jsonplaceholder.typicode.com/posts',
+// [
+//     'body'=>[
+//         'title' => "this is post title",
+//         'body' => 'this is body',
+//         'userId' => 10
 
+//     ],
+// ]) );
+$posts = json_decode($posts);
+// print_r($post);
 ?>
 <table class="widefat fixed striped">
     <thead>
@@ -16,12 +25,14 @@ $user = json_decode($info);
         </tr>
     </thead>
     <tbody>
+        <?php foreach($posts as $post): ?>
         <tr>
-            <td><?php echo $user->id; ?></td>
-            <td><img src="<?php echo $user->avatar_url;  ?>" width = "100" alt=""></td>
-            <td><?php echo $user->name; ?></td>
-            <td><?php echo $user->company; ?></td>
-            <td><?php echo $user->location; ?></td>
+            <td><?php echo $post->id; ?></td>
+            <td><?php echo $post->userId;  ?></td>
+            <td><?php echo $post->title; ?></td>
+            <td><?php echo $post->body; ?></td>
+           
         </tr>
+        <?php endforeach; ?>
 </tbody>
 </table>
