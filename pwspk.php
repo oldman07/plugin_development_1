@@ -30,11 +30,13 @@ function pwspk_register_deactivation_hook()
 }
 
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('PLUGIN_FILE', __FILE__);
 
 include plugin_dir_path(__FILE__)."/inc/shortcode.php";     //plugin_dir_path is use to add php files in the file
 include plugin_dir_path(__FILE__)."/inc/metaboxes.php";
 include plugin_dir_path(__FILE__)."/inc/custom-posttype.php";
 // include PLUGIN_PATH."inc/api.php";
+include PLUGIN_PATH."inc/db.php";
 
 // add_filter('the_title', 'pwspk_title');                     //the_title is a pre define term use to make changes in post title.
 // function pwspk_title($title)
