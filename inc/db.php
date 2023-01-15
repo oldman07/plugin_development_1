@@ -35,15 +35,15 @@ register_activation_hook( PLUGIN_FILE,function(){
 
 
 register_deactivation_hook( PLUGIN_FILE, function(){
-  global $wpdb;
-  $prefix = $wpdb->$prefix;
-  // $sql = "DROP TABLE IF EXIST '{$prefix}likesdislikes';";
-  // $wpdb->query($sql);
+//   global $wpdb;
+//   $prefix = $wpdb->$prefix;
+//   // $sql = "DROP TABLE IF EXIST '{$prefix}likesdislikes';";
+//   // $wpdb->query($sql);
   
-$table_name = $wpdb->prefix . 'my_table';
+// $table_name = $wpdb->prefix . 'my_table';
 
-$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
-} )
+// $wpdb->query( "DROP TABLE IF EXISTS $table_name" );
+ } )
     
 
 ?>
